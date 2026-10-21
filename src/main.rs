@@ -39,11 +39,25 @@
 use std::f32::consts::FRAC_PI_2;
 
 use bevy::{color::palettes::tailwind, input::mouse::AccumulatedMouseMotion, prelude::*};
+use bevy::{
+    render::{RenderPlugin, settings::{WgpuSettings, RenderCreation, InstanceFlags}},
+};
 
 fn main() {
     App::new()
         // Bevyの標準プラグイン群（ウィンドウ生成、レンダラー、入力処理など）を追加
-        .add_plugins(DefaultPlugins)
+        .add_plugins((
+            DefaultPlugins
+            //.set(ImagePlugin::default_nearest())
+            .set(RenderPlugin {
+                render_creation: RenderCreation::Automatic(Box::new(
+                    WgpuSettings {
+                        instance_flags: InstanceFlags::ALLOW_UNDERLYING_NONCOMPLIANT_ADAPTER,
+                        ..default()
+                    },
+                )),
+                ..default()
+        ))
         // フラグリソースの初期化（このフレームで固定タイムステップが実行されたかを追跡）
         .init_resource::<DidFixedTimestepRunThisFrame>()
         // アプリ起動時に1回だけ実行する初期化システム（UI、プレイヤー、3D環境の生成）
