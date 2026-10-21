@@ -38,7 +38,7 @@ jobs:
 
       # 4. リリースモードでWASMビルドを実行
       - name: Build with Trunk
-        run: trunk build --release --public-url "/bevy_physics/"
+        run: trunk build --release --public-url "/bevy_shader_material/"
 
       - name: Copy assets to dist
         run: cp -r assets dist/

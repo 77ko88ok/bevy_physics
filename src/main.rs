@@ -57,6 +57,7 @@ fn main() {
                     },
                 )),
                 ..default()
+            }),
         ))
         // フラグリソースの初期化（このフレームで固定タイムステップが実行されたかを追跡）
         .init_resource::<DidFixedTimestepRunThisFrame>()
