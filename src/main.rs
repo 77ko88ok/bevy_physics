@@ -331,7 +331,7 @@ fn did_fixed_timestep_run_this_frame(
 
 /// 固定タイムステップでの物理計算が完了した後、蓄積された入力をクリアするシステム。
 fn clear_input(mut input: Single<&mut AccumulatedInput>) {
-    **input = AccumulatedInput::default();
+   **input = AccumulatedInput::default();
 }
 
 /// 固定タイムステップ（FixedUpdate）ごとに物理シミュレーションを1ステップ進めるシステム。
