@@ -256,6 +256,7 @@ fn rotate_camera(
         // クランプされた新しいオイラー角からクォータニオンを再構築して代入
         transform.rotation = Quat::from_euler(EulerRot::YXZ, yaw, pitch, roll);
     }
+    // println!("mouse = {:?}", accumulated_mouse_motion.delta);
 }
 
 /// キーボードのWASD入力を読み取り、カメラの向いている方向に基づいた移動速度（Velocity）に変換して蓄積するシステム。
